@@ -1,0 +1,17 @@
+# Advent of Code
+
+## Summary
+
+While I've attempted earlier Advent of Code problems with Elixir, I find it's easier to work in Livebook, especially with the [Advent of Code Livebook Helper](https://github.com/ljgago/kino_aoc) and the template https://github.com/ljgago/kino_aoc/blob/main/priv/livebook/aoc_template.livemd.
+
+I started with a very early template but applied changes as I wished to keep the description for each part to reduce looking at the source. I end up looking back anyway so this isn't perfect, plus the work to manually paste and convert the markdown is not trivial. When up against others from the beta DockYard Academy cohort, speed is absolutely a factor to at least feel like my score matches my peers.
+
+To use with the template:
+[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fraw.githubusercontent.com%2Fljgago%2Fkino_aoc%2Fmain%2Fpriv%2Flivebook%2Faoc_template.livemd)
+
+## 2022
+
+* [Day 01](2022/day01.livemd)
+* [Day 02](2022/day02.livemd)
+* [Day 03](2022/day03.livemd)
+* [Day 04](2022/day04.livemd)
