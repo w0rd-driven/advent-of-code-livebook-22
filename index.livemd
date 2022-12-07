@@ -1,4 +1,4 @@
-# Advent of Code in Elixir Livebook
+# Advent of Code in Elixir Livebook, 2022 Edition
 
 ## Summary
 
@@ -7,15 +7,151 @@ While I've attempted earlier Advent of Code problems with Elixir, I find it's ea
 Up to 2022 Day 04 uses an early template that included the description of each part in markdown.
 I find including it somewhat eliminates the need to switch back and forth to the AoC tab but I have not always been consistent.
 It also takes non-trivial effort to properly annotate the links, code blocks, and color scheme.
-When up against others from the beta DockYard Academy cohort, speed is a factor to feel like my score (at least in these early days) can match my peers on our private leaderboard.
+~~When up against others from the beta DockYard Academy cohort, speed is a factor to feel like my score (at least in these early days) can match my peers on our private leaderboard.~~
 
-Open the template:
+I thought I wanted to go for brute forcing and speed but I realized that's the quickest way to not really learn anything.
+While my attempts will always strive to solve a problem on my own first, I plan on adding knowledge dumps here or on my journal.
+My peers are often thinking multiple steps ahead of me, doing things like altering the input to make transformation or navigation easier.
+I'm often walking on eggshells around the input and considering this is meant to be fun, we don't have to play by arbitrary rules.
 
-[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fraw.githubusercontent.com%2Fljgago%2Fkino_aoc%2Fmain%2Fpriv%2Flivebook%2Faoc_template.livemd)
+## Puzzles
 
-## 2022
+1. [Day 01](2022/day01.livemd)
+2. [Day 02](2022/day02.livemd)
+3. [Day 03](2022/day03.livemd)
+4. [Day 04](2022/day04.livemd)
+5. [Day 05](2022/day05.livemd)
 
-* [Day 01](2022/day01.livemd)
-* [Day 02](2022/day02.livemd)
-* [Day 03](2022/day03.livemd)
-* [Day 04](2022/day04.livemd)
+## Table of Contents
+
+1. [Puzzles](#puzzles)
+2. [Installation](#installation)
+3. [Usage](#usage)
+   1. [Navigation](#navigation)
+   2. [Create From Template](#create-from-template)
+   3. [Create From Last Notebook](#create-from-last-notebook)
+4. [Workflow](#workflow)
+   1. [Write Part One Introduction](#write-partone-introduction)
+   2. [Configure Parser](#configure-parser)
+   3. [Implement Parser](#implement-parser)
+   4. [Implement PartOne](#implement-partone)
+   5. [Write Part Two Introduction](#write-parttwo-introduction)
+   6. [Implement PartTwo](#implement-parttwo)
+   7. [Refactor](#refactor)
+
+## Installation
+
+1. Clone the project using `git@github.com:w0rd-driven/advent-of-code-livebook-22.git`.
+2. If using the `asdf` version manager, install the local versions by running `asdf install`. This may take a while.
+3. Install Livebook.
+4. It's preferred to use the CLI to launch via the command `livebook server index.livemd`.
+
+## Usage
+
+### Navigation
+
+1. Navigate to an existing puzzle below.
+2. Marvel at the often naive approach to solving each puzzle.
+
+### Create From Template
+
+1. Click on the button: [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fraw.githubusercontent.com%2Fljgago%2Fkino_aoc%2Fmain%2Fpriv%2Flivebook%2Faoc_template.livemd)
+2. Click `Run notebook` if your Livebook location is correct.
+3. This should open the Livebook with the title `Advent of Code - Day XX`
+4. Change the title to `Advent of Code 2022 :: Day 05`, changing the day number accordingly.
+5. Save the new Livebook by clicking on the disk icon.
+6. Navigate to the existing directory in the modal.
+7. Name the file `day05.livemd`.
+8. Click Save.
+
+### Create From Last Livebook
+
+1. Navigate to the last day completed.
+2. Click the three vertical dots at the very top of the Livebook.
+3. Click `Fork`.
+4. Change the title from ex. `Advent of Code 2022 :: Day 04 - fork` to `Advent of Code 2022 :: Day 05`.
+5. Save the new Livebook by clicking on the disk icon.
+6. Navigate to the existing directory in the modal.
+7. Click on `day04.livemd` for instance to set the name but do not save it. This is a shortcut to use the same format.
+8. Change `04` to `05` and **now click Save**.
+
+## Workflow
+
+1. Configure the introduction to work from only the Livebook.
+2. Configure the Parser AOC helper that downloads the input.
+3. Use TDD to implement the Parser tests and `parser` function implementation.
+
+### Write PartOne Introduction
+
+1. Navigate to the page you wish to introduce, i.e. https://adventofcode.com/2022/day/5
+2. On our new Livebook, double click the `--> Content` section to edit the markdown.
+3. Copy the contents from `--- Day 5: Supply Stacks ---` down to `To begin, get your puzzle input.`.
+4. Paste the contents into the markdown section.
+5. Prepend `###` in front of the `--- Day 5: Supply Stacks ---` line to make it a heading.
+6. Add appropriate spacing, **bolding** (encase in `**`), code blocks (three back ticks), code highlights (one backtick), and color highlights with `<span>` tags.
+
+### Configure Parser
+
+This is applicable from Day 05 onward as the template moved to this pattern.
+I'm following suit after noticing it is a common theme to configure a parsing routine that is shared between both parts.
+We are also not bound by rules, we can completely alter the input to use familiar modules or patterns.
+
+1. Evaluate a code cell to download the helper and show the UI.
+2. Choose the `Year` (2022), `Day` (05), and click the `Session` to set the `Set the Session ID`.
+3. Click back to the tab for the description page, i.e. https://adventofcode.com/2022/day/5.
+4. Open your browser's DevTools.
+5. Navigate to the `Network` tab and refresh the page.
+6. Click the 1st response, it should be `5` or correspond to the day.
+7. Click the `Headers` tab.
+8. Scroll down to the `Request Headers` section.
+9. Look for the `cookie: ` with `session=` and copy everything after the equals sign. This starts with `5361` for me but will likely be different for you.
+10. Click back to the Livebook with the `Set Session ID` modal still open.
+11. Paste the cookie in the `Value`. Verify the `session=` isn't included as you'll have errors if it's present.
+12. Type in the name `SESSION`.
+13. Click the `Add +` button.
+14. Click `Evaluate` to evaluate the cell. You should see `{:ok, input results...}`
+
+### Implement Parser
+
+1. Find your test case input in the description.
+2. Change `@input ""` to `@input """` and enclose in `"""`
+3. Change `@expected = nil` to the expected output of the `parse` operation.
+4. Implement the `parse` function to produce the expected output.
+   1. This should be shared output between both parts. You may start with part one and realize this must change for part two as well.
+5. Make sure your test passes.
+   1. You may need to work backwards from the `Part One` implementation.
+
+### Implement PartOne
+
+1. Implement the same `@input` from the `Parser` section. We're coupling this bad boy.
+2. Change `@expected = nil` to the expected result, typically toward the end of the description. For Day 05, that should be `@expected = "CMZ"`
+3. In the `run` function, your first call should be to `Parser.parse(input)` to parse the input into an expected format. This may be decoupled later when I've done enough of these.
+4. Implement the rest of the `run` function to produce the test output. For Day 05 that should be `CMZ`.
+5. Make sure your test passes.
+
+### Write PartTwo Introduction
+
+1. Repeat the steps for the main introduction.
+2. There is currently no Part Two Introduction section so we'll add it.
+3. Above the section marked `Code` click `+ Block`, `Section` to insert a new section.
+4. Title this `Part Two Introduction` as it should be unique.
+5. It may make more sense to append part two to the introduction at the top. I'll likely end up doing this even though scrolling could get annoying.
+6. Pro tip: use CMD+Up or CMD+Down outside of a cell to quickly scroll to the top or bottom of your browser tab. This works for all major browsers.
+
+### Implement PartTwo
+
+1. Implement the same `@input` from the `Parser` section. We're coupling this bad boy.
+2. Change `@expected = nil` to the expected result, typically toward the end of the description. For Day 05, that should be `@expected = "CMZ"`
+3. In the `run` function, your first call should be to `Parser.parse(input)` to parse the input into an expected format. This may be decoupled later when I've done enough of these.
+4. Implement the rest of the `run` function to produce the test output. For Day 05 that should be `CMZ`.
+5. Make sure your test passes.
+
+### Refactor
+
+You aren't required to but ideally we should refactor what we've written to be concise.
+Normally, I don't do this until I've needed something 3 or more times but it's a good idea to be in this habit.
+It will be especially easy to notice better ways of producing the same end results.
+By having tests, we can also be confident in our changes.
+I highly recommend **committing the Livebook to git before refactoring** as I like to have as many ugly steps as possible.
+I think it's important for me to show that I'm not perfect out of the gate, often very far from it and that is okay.
+Refactoring is a luxury, not a requirement. Ugly code will become better the more you work on it.
