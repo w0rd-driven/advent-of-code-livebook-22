@@ -29,7 +29,7 @@ I'm often walking on eggshells around the input and considering this is meant to
 3. [Usage](#usage)
    1. [Navigation](#navigation)
    2. [Create From Template](#create-from-template)
-   3. [Create From Last Notebook](#create-from-last-notebook)
+   3. [Create From Last Livebook](#create-from-last-livebook)
 4. [Workflow](#workflow)
    1. [Write Part One Introduction](#write-partone-introduction)
    2. [Configure Parser](#configure-parser)
