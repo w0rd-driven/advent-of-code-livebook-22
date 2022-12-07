@@ -1,4 +1,4 @@
-# Advent of Code 2022 :: Day 04
+# Advent of Code 2022 :: Day 05
 
 ```elixir
 Mix.install(
@@ -14,7 +14,7 @@ Mix.install(
 <!-- livebook:{"attrs":{"day":"4","session_secret":"SESSION","variable":"puzzle_input","year":"2022"},"kind":"Elixir.KinoAOC.HelperCell","livebook_object":"smart_cell"} -->
 
 ```elixir
-{:ok, puzzle_input} = KinoAOC.download_puzzle("2022", "4", System.fetch_env!("LB_SESSION"))
+{:ok, puzzle_input} = KinoAOC.download_puzzle("2022", "4", "")
 ```
 
 <!-- livebook:{"branch_parent_index":0} -->
